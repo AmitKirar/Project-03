@@ -46,6 +46,8 @@ public class JasperCtl extends BaseCtl {
 			/* Compilation of jrxml file */
 			JasperReport jasperReport = JasperCompileManager.compileReport(rb.getString("jasperctl"));
 
+			System.out.println("jasperReport name =====> " + jasperReport.getName());
+
 			HttpSession session = request.getSession(true);
 
 			UserDTO dto = (UserDTO) session.getAttribute("user");
@@ -71,21 +73,20 @@ public class JasperCtl extends BaseCtl {
 			/* Filling data into the report */
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, conn);
 
+			System.out.println("jasper print report name ===> " + jasperPrint);
+
 			/* Export Jasper report */
 			byte[] pdf = JasperExportManager.exportReportToPdf(jasperPrint);
+
+			System.out.println("pdf ==== > " + pdf);
 
 			response.setContentType("application/pdf");
 			response.getOutputStream().write(pdf);
 			response.getOutputStream().flush();
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 	}
 
 	@Override
