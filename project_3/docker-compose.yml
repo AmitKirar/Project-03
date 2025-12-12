@@ -24,6 +24,7 @@ services:
       - mysql
     environment:
       - DATABASE_URL=jdbc:mysql://mysql:3306/project_3
+      - jasperctl=/home/vedic.jrxml
 networks:
   mynetwork:
     driver: bridge

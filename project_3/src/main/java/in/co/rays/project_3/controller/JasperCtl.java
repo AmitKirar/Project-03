@@ -43,8 +43,15 @@ public class JasperCtl extends BaseCtl {
 
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
 
+			String jasperFile = System.getenv("jasperctl");
+			if (jasperFile == null) {
+				jasperFile = rb.getString("jasperctl");
+			}
+
+			System.out.println("jasperctl path=" + jasperFile);
+
 			/* Compilation of jrxml file */
-			JasperReport jasperReport = JasperCompileManager.compileReport(rb.getString("jasperctl"));
+			JasperReport jasperReport = JasperCompileManager.compileReport(jasperFile);
 
 			System.out.println("jasperReport name =====> " + jasperReport.getName());
 

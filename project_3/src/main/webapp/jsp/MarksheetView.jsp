@@ -64,7 +64,8 @@ i.css {
 							<%
 								long id = DataUtility.getLong(request.getParameter("id"));
 
-								if (dto.getId() != null) {
+							if (dto.getId() != null && dto.getId() > 0L)
+ {
 							%>
 							<h3 class="text-center default-text text-primary">Update
 								Marksheet</h3>
@@ -209,7 +210,7 @@ i.css {
 							</div>
 							</br>
 							<%
-								if (dto.getId()!=null) {
+								if (dto.getId()!=null  && dto.getId()>0) {
 							%>
 
 							<div class="text-center">
