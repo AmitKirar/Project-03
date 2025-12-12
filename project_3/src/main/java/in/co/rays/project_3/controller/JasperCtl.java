@@ -42,10 +42,10 @@ public class JasperCtl extends BaseCtl {
 		try {
 
 			ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.project_3.bundle.system");
-
 			String jasperFile = System.getenv("jasperctl");
 			if (jasperFile == null) {
-				jasperFile = rb.getString("jasperctl");
+				jasperFile = getServletContext().getRealPath(rb.getString("jasperctl"));
+
 			}
 
 			System.out.println("jasperctl path=" + jasperFile);
