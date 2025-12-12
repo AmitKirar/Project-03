@@ -142,14 +142,14 @@ public class StudentCtl extends BaseCtl {
 
 		log.debug("StudentCtl Method doGet Started");
 
-		String op = DataUtility.getString(request.getParameter("operation"));
+//		String op = DataUtility.getString(request.getParameter("operation"));
 		long id = DataUtility.getLong(request.getParameter("id"));
 
 		// get model
 
 		StudentModelInt model = ModelFactory.getInstance().getStudentModel();
 
-		if (id > 0 || op != null) {
+		if (id > 0) {
 			StudentDTO dto;
 			try {
 				dto = model.findByPK(id);
@@ -160,8 +160,9 @@ public class StudentCtl extends BaseCtl {
 				return;
 			}
 		}
-		ServletUtility.forward(getView(), request, response);
 		log.debug("StudentCtl Method doGett Ended");
+		ServletUtility.forward(getView(), request, response);
+		
 	}
 
 	/**
